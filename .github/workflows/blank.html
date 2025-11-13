@@ -1,0 +1,2722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MWA A – 200 Question MCQ (A-1 to A-5) with Task Breakdown</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 0 10px 40px;
+      line-height: 1.4;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .question {
+      margin-bottom: 18px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .question-header {
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+    .meta {
+      font-size: 0.85em;
+      color: #555;
+      margin-bottom: 6px;
+    }
+    .options label {
+      display: block;
+      margin-bottom: 3px;
+      cursor: pointer;
+    }
+    #submitBtn, #newQuizBtn {
+      padding: 10px 18px;
+      margin: 10px 5px 20px 0;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    #results {
+      margin-top: 20px;
+      border-top: 2px solid #333;
+      padding-top: 15px;
+    }
+    .wrong-answer {
+      background: #ffecec;
+      border: 1px solid #ff9999;
+      padding: 8px;
+      margin-bottom: 8px;
+      border-radius: 4px;
+    }
+    .correct-text {
+      font-weight: bold;
+      color: #0a7a0a;
+    }
+    .your-text {
+      font-weight: bold;
+      color: #a00;
+    }
+  </style>
+</head>
+<body>
+  <h1>MWA A – Performs Common Occupational Skills</h1>
+  <h2>Random 25 Question MCQ (200 Question Bank) with Task Breakdown</h2>
+
+  <p>
+    Each quiz pulls 25 random questions from the full 200-question bank.
+    After you submit, you will see:
+    <ul>
+      <li>Your total score</li>
+      <li>Score by Task (A-1 to A-5)</li>
+      <li>Which questions you missed, with correct answers and references</li>
+    </ul>
+  </p>
+
+  <button id="newQuizBtn">Generate New Quiz</button>
+  <button id="submitBtn">Submit Quiz</button>
+
+  <div id="quiz"></div>
+  <div id="results"></div>
+
+  <script>
+    // 200-question bank divided by Task A-1..A-5 according to outline percentages
+    const questionBank = [
+      // =========================
+      // TASK A-1 – 38 QUESTIONS
+      // =========================
+      // A-1 Q1
+      {
+        q: "Which type of hazard best describes poor housekeeping that causes tripping over scrap pipe on the floor?",
+        opts: ["Chemical", "Physical", "Biological", "Ergonomic"],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Hazard Identification"
+      },
+      // A-1 Q2
+      {
+        q: "Working near an open excavation without guardrails is mainly what type of hazard?",
+        opts: ["Fall", "Chemical", "Biological", "Radiation"],
+        answer: 0,
+        task: "A-1",
+        ref: "Safety – Fall Hazards"
+      },
+      // A-1 Q3
+      {
+        q: "Which hazard control is at the top of the hierarchy of controls?",
+        opts: ["PPE", "Administrative control", "Engineering control", "Elimination"],
+        answer: 3,
+        task: "A-1",
+        ref: "Safety – Hazard Controls"
+      },
+      // A-1 Q4
+      {
+        q: "Substituting a less toxic solvent for a more toxic one is an example of:",
+        opts: ["Elimination", "Substitution", "Engineering control", "PPE"],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Hazard Controls"
+      },
+      // A-1 Q5
+      {
+        q: "Installing a guard on a rotating shaft is which type of control?",
+        opts: ["Administrative", "Engineering", "PPE", "Elimination"],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Machine Guarding"
+      },
+      // A-1 Q6
+      {
+        q: "Writing a safe work procedure is mainly an example of:",
+        opts: ["Elimination", "Administrative control", "Engineering control", "PPE"],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Administrative Controls"
+      },
+      // A-1 Q7
+      {
+        q: "Which statement best describes a worker duty under OHS legislation?",
+        opts: [
+          "Provide all PPE to other workers",
+          "Follow safe work procedures and use required PPE",
+          "Write company safety policy",
+          "Inspect all tools weekly"
+        ],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Worker Responsibilities"
+      },
+      // A-1 Q8
+      {
+        q: "Which body is primarily responsible for enforcing occupational health and safety regulations in BC?",
+        opts: ["CSA", "WorkSafeBC", "Transport Canada", "Municipality"],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Regulations"
+      },
+      // A-1 Q9
+      {
+        q: "The right to refuse unsafe work allows a worker to:",
+        opts: [
+          "Refuse any job they dislike",
+          "Refuse work they believe is unsafe without punishment",
+          "Quit without notice",
+          "Avoid all overtime"
+        ],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Worker Rights"
+      },
+      // A-1 Q10
+      {
+        q: "Due diligence means:",
+        opts: [
+          "Doing only what others do",
+          "Doing everything reasonable to protect health and safety",
+          "Relying on PPE only",
+          "Waiting for instructions from the inspector"
+        ],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Due Diligence"
+      },
+      // A-1 Q11
+      {
+        q: "Good housekeeping on site mainly helps prevent:",
+        opts: ["Slips, trips and falls", "Sunburn", "Electrical shock", "Chemical burns only"],
+        answer: 0,
+        task: "A-1",
+        ref: "Safety – Housekeeping"
+      },
+      // A-1 Q12
+      {
+        q: "Which item is an example of PPE?",
+        opts: ["Guardrail", "Lockout hasp", "Safety glasses", "Warning sign"],
+        answer: 2,
+        task: "A-1",
+        ref: "Safety – PPE Types"
+      },
+      // A-1 Q13
+      {
+        q: "Before starting a new task, a Job Hazard Analysis (JHA) is used to:",
+        opts: [
+          "Determine wages",
+          "Identify hazards and choose controls",
+          "Order materials",
+          "Schedule inspections"
+        ],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – JHA"
+      },
+      // A-1 Q14
+      {
+        q: "Under WHMIS, the flame pictogram indicates:",
+        opts: ["Corrosive", "Flammable", "Explosive", "Biohazard"],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – WHMIS Pictograms"
+      },
+      // A-1 Q15
+      {
+        q: "The main purpose of a Safety Data Sheet (SDS) is to:",
+        opts: [
+          "List tool serial numbers",
+          "Provide detailed information on safe use and hazards of a product",
+          "Advertise the brand",
+          "Record worker training"
+        ],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – SDS"
+      },
+      // A-1 Q16
+      {
+        q: "Which WHMIS item is normally found on a supplier label?",
+        opts: [
+          "Hazard pictograms and signal word",
+          "Hourly wage",
+          "Employee name",
+          "Building address only"
+        ],
+        answer: 0,
+        task: "A-1",
+        ref: "Safety – WHMIS Labels"
+      },
+      // A-1 Q17
+      {
+        q: "Compressed gas cylinders should be stored:",
+        opts: [
+          "Loose on the floor",
+          "Fastened upright and protected from impact",
+          "Lying flat and stacked",
+          "In any orientation"
+        ],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Compressed Gas"
+      },
+      // A-1 Q18
+      {
+        q: "When a chemical spill occurs, your first priority is to:",
+        opts: [
+          "Save all tools",
+          "Check SDS and follow emergency procedures",
+          "Walk through the spill",
+          "Ignore it if it smells okay"
+        ],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Spill Response"
+      },
+      // A-1 Q19
+      {
+        q: "Class C fire extinguishers are intended for which type of fire?",
+        opts: ["Ordinary combustibles", "Flammable liquids", "Energized electrical", "Cooking oils"],
+        answer: 2,
+        task: "A-1",
+        ref: "Safety – Fire Extinguishers"
+      },
+      // A-1 Q20
+      {
+        q: "Before using a fire extinguisher, you should first:",
+        opts: [
+          "Ignore the alarm",
+          "Ensure alarm has been raised and evacuation started",
+          "Open all doors and windows",
+          "Hide under a desk"
+        ],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Fire Response"
+      },
+      // A-1 Q21
+      {
+        q: "Which is the safest method to test if equipment is truly locked out?",
+        opts: [
+          "Ask a coworker",
+          "Try to start or energize it after lockout",
+          "Assume it is safe after applying tag",
+          "Check from a distance only"
+        ],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Lockout Verification"
+      },
+      // A-1 Q22
+      {
+        q: "Lockout devices are used to:",
+        opts: [
+          "Hold energy-isolating devices in a safe position",
+          "Increase pressure in piping",
+          "Mark stored materials",
+          "Fasten drawings to walls"
+        ],
+        answer: 0,
+        task: "A-1",
+        ref: "Safety – Lockout Devices"
+      },
+      // A-1 Q23
+      {
+        q: "A personal lock on a locked-out device is normally removed by:",
+        opts: [
+          "Any worker needing the equipment",
+          "The supervisor only",
+          "The worker who applied it or as per company procedure",
+          "The first person who sees it"
+        ],
+        answer: 2,
+        task: "A-1",
+        ref: "Safety – Lockout Responsibility"
+      },
+      // A-1 Q24
+      {
+        q: "Confined spaces can be dangerous because they may:",
+        opts: [
+          "Have poor lighting only",
+          "Be too big",
+          "Contain toxic or oxygen-deficient atmospheres",
+          "Always be outdoors"
+        ],
+        answer: 2,
+        task: "A-1",
+        ref: "Safety – Confined Spaces"
+      },
+      // A-1 Q25
+      {
+        q: "Before entering a confined space, workers must usually:",
+        opts: [
+          "Sign a hot-work permit",
+          "Obtain and follow a confined space entry permit and procedure",
+          "Bring a cell phone",
+          "Skip all testing if it looks safe"
+        ],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Confined Space Entry"
+      },
+      // A-1 Q26
+      {
+        q: "Hearing protection is normally required when:",
+        opts: [
+          "Noise levels could damage hearing",
+          "Noise is barely noticeable",
+          "Working alone",
+          "Using a ladder"
+        ],
+        answer: 0,
+        task: "A-1",
+        ref: "Safety – Hearing Protection"
+      },
+      // A-1 Q27
+      {
+        q: "Which hazard is controlled mainly by using fall arrest or guardrails?",
+        opts: ["Noise", "Heat stress", "Working at heights", "Chemical vapours"],
+        answer: 2,
+        task: "A-1",
+        ref: "Safety – Fall Protection"
+      },
+      // A-1 Q28
+      {
+        q: "When lifting manually, the safest technique includes:",
+        opts: [
+          "Twisting at the waist",
+          "Holding the load away from the body",
+          "Bending knees and keeping load close",
+          "Keeping knees locked"
+        ],
+        answer: 2,
+        task: "A-1",
+        ref: "Safety – Ergonomics"
+      },
+      // A-1 Q29
+      {
+        q: "A biological hazard for plumbers is most likely:",
+        opts: ["Loud tools", "Open sewage", "Bright lights", "Dusty drywall"],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Hazard Types"
+      },
+      // A-1 Q30
+      {
+        q: "Which environmental practice is best on a plumbing site?",
+        opts: [
+          "Dump solvents down the drain",
+          "Store waste oil in labeled containers for proper disposal",
+          "Burn scrap PVC",
+          "Wash paint brushes in storm drains"
+        ],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Environmental Protection"
+      },
+      // A-1 Q31
+      {
+        q: "During a site orientation, one of the most important things to learn is:",
+        opts: [
+          "Location of vending machines",
+          "Location of first aid and emergency exits",
+          "Colour of company trucks",
+          "Lunchroom menu"
+        ],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Orientation"
+      },
+      // A-1 Q32
+      {
+        q: "Which is an example of professional conduct on a job site?",
+        opts: [
+          "Horseplay during breaks",
+          "Using abusive language",
+          "Respecting others and following site rules",
+          "Ignoring safety meetings"
+        ],
+        answer: 2,
+        task: "A-1",
+        ref: "Safety – Professionalism"
+      },
+      // A-1 Q33
+      {
+        q: "If you discover a serious hazard that you cannot fix immediately, you should:",
+        opts: [
+          "Ignore it and work around it",
+          "Barricade or isolate it and report it promptly",
+          "Wait for someone else to report it",
+          "Tell only coworkers"
+        ],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Hazard Reporting"
+      },
+      // A-1 Q34
+      {
+        q: "Electrical cords should be inspected for:",
+        opts: [
+          "Colour fading",
+          "Frayed insulation and damaged plugs",
+          "Brand name",
+          "Age only"
+        ],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Electrical Cords"
+      },
+      // A-1 Q35
+      {
+        q: "The main purpose of a toolbox talk is to:",
+        opts: [
+          "Discuss sports scores",
+          "Hand out paycheques",
+          "Review specific safety topics and hazards",
+          "Assign parking spots"
+        ],
+        answer: 2,
+        task: "A-1",
+        ref: "Safety – Toolbox Talks"
+      },
+      // A-1 Q36
+      {
+        q: "A hot-work permit is required when:",
+        opts: [
+          "Using a ladder",
+          "Doing any welding, cutting, or open flame in a designated area",
+          "Lifting heavy objects",
+          "Working in offices"
+        ],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Hot Work"
+      },
+      // A-1 Q37
+      {
+        q: "Which statement about PPE is true?",
+        opts: [
+          "It replaces the need for other hazard controls",
+          "It is the last line of defense in the hierarchy of controls",
+          "It is only for visitors",
+          "It is optional if you are experienced"
+        ],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – PPE Role"
+      },
+      // A-1 Q38
+      {
+        q: "A safe escape route in an emergency should be:",
+        opts: [
+          "Blocked by stored materials",
+          "Clearly marked and kept clear at all times",
+          "Used for material storage",
+          "Locked except during drills"
+        ],
+        answer: 1,
+        task: "A-1",
+        ref: "Safety – Egress"
+      },
+
+      // =========================
+      // TASK A-2 – 46 QUESTIONS
+      // =========================
+      // Hand & power tools, access equipment, rigging, welding/soldering
+      // A-2 Q1
+      {
+        q: "A basin wrench is commonly used to:",
+        opts: [
+          "Cut steel pipe",
+          "Tighten faucet nuts under sinks",
+          "Bend copper tube",
+          "Pull nails from lumber"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Tools – Specialty Wrenches"
+      },
+      // A-2 Q2
+      {
+        q: "A chain wrench is especially useful when:",
+        opts: [
+          "Working in wide open spaces",
+          "Access is tight around a large diameter pipe",
+          "Cutting plastic pipe",
+          "Measuring pipe slope"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Tools – Chain Wrench"
+      },
+      // A-2 Q3
+      {
+        q: "When using a hacksaw, a good practice is to have:",
+        opts: [
+          "Only one tooth contacting the work",
+          "Several teeth in contact to reduce breakage",
+          "No teeth touching the work",
+          "Blade installed backward"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Tools – Hacksaw"
+      },
+      // A-2 Q4
+      {
+        q: "Which tool is best for cutting 2 in. steel pipe squarely?",
+        opts: [
+          "Wood handsaw",
+          "Tubing cutter",
+          "Pipe cutter with cutting wheels",
+          "Cold chisel"
+        ],
+        answer: 2,
+        task: "A-2",
+        ref: "Tools – Pipe Cutter"
+      },
+      // A-2 Q5
+      {
+        q: "Reaming the inside of cut pipe is done primarily to:",
+        opts: [
+          "Shorten the pipe",
+          "Remove burrs and restore full bore",
+          "Increase friction",
+          "Change pipe schedule"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Tools – Reamer"
+      },
+      // A-2 Q6
+      {
+        q: "A cast-iron snap cutter works by:",
+        opts: [
+          "Grinding through the pipe slowly",
+          "Snapping the pipe with multiple cutting wheels and force",
+          "Drilling several holes then breaking",
+          "Sawing through the pipe"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Tools – Snap Cutter"
+      },
+      // A-2 Q7
+      {
+        q: "The length of a pipe wrench is measured from:",
+        opts: [
+          "Outside of hook jaw to handle end",
+          "Inside of hook jaw to handle end",
+          "Heel jaw to handle midpoint",
+          "Jaw tip to midpoint"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Tools – Pipe Wrench"
+      },
+      // A-2 Q8
+      {
+        q: "Which practice is safest when using a portable grinder?",
+        opts: [
+          "Remove the guard for better access",
+          "Use discs rated for at least the grinder RPM",
+          "Apply sideways pressure on thin cut-off wheels",
+          "Work without safety glasses"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Tools – Grinder"
+      },
+      // A-2 Q9
+      {
+        q: "A GFCI device on power tools is used to:",
+        opts: [
+          "Boost voltage",
+          "Reduce tool speed",
+          "Protect against ground faults and shock",
+          "Secure extension cords"
+        ],
+        answer: 2,
+        task: "A-2",
+        ref: "Tools – Electrical Safety"
+      },
+      // A-2 Q10
+      {
+        q: "Which tool is used to create external pipe threads in the shop?",
+        opts: [
+          "Pipe threading machine",
+          "Reciprocating saw",
+          "Cordless drill",
+          "Tubing bender"
+        ],
+        answer: 0,
+        task: "A-2",
+        ref: "Tools – Threading Machine"
+      },
+      // A-2 Q11
+      {
+        q: "Before using a power drill, you should:",
+        opts: [
+          "Check chuck is tight and cord is in good condition",
+          "Remove guard",
+          "Disable safety switches",
+          "Wrap cord around your hand"
+        ],
+        answer: 0,
+        task: "A-2",
+        ref: "Tools – Drill"
+      },
+      // A-2 Q12
+      {
+        q: "A tubing cutter on copper tubing is preferred because it:",
+        opts: [
+          "Is faster but leaves rough ends only",
+          "Produces a straight, burr-free cut when used correctly",
+          "Cannot cut soft copper",
+          "Is used only on steel"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Tools – Tubing Cutter"
+      },
+      // A-2 Q13
+      {
+        q: "A spirit level is used in layout to:",
+        opts: [
+          "Find temperature differences",
+          "Check plumb, level, or slope",
+          "Measure pipe diameter",
+          "Test water pressure"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Tools – Level"
+      },
+      // A-2 Q14
+      {
+        q: "A plumb bob is primarily used to:",
+        opts: [
+          "Measure length",
+          "Check vertical alignment",
+          "Test for leaks",
+          "Set pressure"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Tools – Plumb Bob"
+      },
+      // A-2 Q15
+      {
+        q: "Step ladders should be used:",
+        opts: [
+          "Fully opened with spreaders locked",
+          "Leaning against a wall closed",
+          "As a scaffold plank",
+          "On top of tables"
+        ],
+        answer: 0,
+        task: "A-2",
+        ref: "Access – Ladders"
+      },
+      // A-2 Q16
+      {
+        q: "An extension ladder should extend above a landing by at least:",
+        opts: ["0.5 m", "1 m", "3 m", "No requirement"],
+        answer: 1,
+        task: "A-2",
+        ref: "Access – Ladders"
+      },
+      // A-2 Q17
+      {
+        q: "The recommended angle for a straight ladder is:",
+        opts: [
+          "Base 1/4 of working length away from wall",
+          "Base directly against wall",
+          "Base half the ladder length from wall",
+          "No specific angle"
+        ],
+        answer: 0,
+        task: "A-2",
+        ref: "Access – Ladders"
+      },
+      // A-2 Q18
+      {
+        q: "Scaffold platforms should normally be:",
+        opts: [
+          "Partially decked",
+          "Fully decked with guardrails and toe boards",
+          "Used without guardrails",
+          "Used as storage only"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Access – Scaffolds"
+      },
+      // A-2 Q19
+      {
+        q: "Aerial work platforms (scissor lifts) require operators to:",
+        opts: [
+          "Skip inspections",
+          "Stand on guardrails for extra height",
+          "Perform pre-use inspections and follow manufacturer instructions",
+          "Lean ladders on them"
+        ],
+        answer: 2,
+        task: "A-2",
+        ref: "Access – Aerial Platforms"
+      },
+      // A-2 Q20
+      {
+        q: "Rigging slings must NOT be used when:",
+        opts: [
+          "Tags are legible",
+          "They are free of cuts and damage",
+          "Their identification tag is missing or unreadable",
+          "They are colour-coded"
+        ],
+        answer: 2,
+        task: "A-2",
+        ref: "Rigging – Sling Inspection"
+      },
+      // A-2 Q21
+      {
+        q: "Working Load Limit (WLL) of a sling is:",
+        opts: [
+          "Average load it should lift",
+          "Maximum safe load for given configuration",
+          "Test load during manufacture only",
+          "Weight of the sling itself"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Rigging – WLL"
+      },
+      // A-2 Q22
+      {
+        q: "As sling angle from horizontal decreases, tension in each leg:",
+        opts: ["Decreases", "Stays the same", "Increases", "Becomes zero"],
+        answer: 2,
+        task: "A-2",
+        ref: "Rigging – Sling Angles"
+      },
+      // A-2 Q23
+      {
+        q: "A tag line on a load is used to:",
+        opts: [
+          "Increase lifting capacity",
+          "Control swinging and rotation",
+          "Measure load weight",
+          "Secure the crane hook"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Rigging – Tag Line"
+      },
+      // A-2 Q24
+      {
+        q: "The knot commonly used to form a fixed loop in a rope for rigging is:",
+        opts: ["Square knot", "Bowline", "Clove hitch", "Overhand"],
+        answer: 1,
+        task: "A-2",
+        ref: "Rigging – Knots"
+      },
+      // A-2 Q25
+      {
+        q: "A come-along (lever hoist) is used to:",
+        opts: [
+          "Cut pipe",
+          "Pull or position loads using a ratchet mechanism",
+          "Measure pipe slope",
+          "Mix concrete"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Rigging – Come-along"
+      },
+      // A-2 Q26
+      {
+        q: "Wire rope clips must be installed following the rule:",
+        opts: [
+          "Always saddle the dead horse",
+          "Never saddle the dead horse",
+          "Use only one clip",
+          "Ignore manufacturer spacing"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Rigging – Wire Rope Clips"
+      },
+      // A-2 Q27
+      {
+        q: "Standard hand signal both arms outstretched with palms down moving side-to-side usually means:",
+        opts: ["Hoist up", "Lower", "Move slowly", "Emergency stop"],
+        answer: 3,
+        task: "A-2",
+        ref: "Rigging – Signals"
+      },
+      // A-2 Q28
+      {
+        q: "In an oxy-fuel system, flashback arrestors are installed to:",
+        opts: [
+          "Increase gas pressure",
+          "Prevent flame from travelling back into hoses and cylinders",
+          "Colour the flame",
+          "Reduce gas flow noise"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Hot Work – Oxy-fuel Safety"
+      },
+      // A-2 Q29
+      {
+        q: "Acetylene cylinders are filled with:",
+        opts: ["Water only", "Concrete", "Porous material and acetone", "Compressed air"],
+        answer: 2,
+        task: "A-2",
+        ref: "Hot Work – Acetylene Cylinders"
+      },
+      // A-2 Q30
+      {
+        q: "Fuel gas fittings often have left-hand threads identified by:",
+        opts: [
+          "Red paint on pipe",
+          "Groove or notch on the nut",
+          "Longer hex",
+          "Reverse colour bands"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Hot Work – Gas Fittings"
+      },
+      // A-2 Q31
+      {
+        q: "When opening a cylinder valve, you should:",
+        opts: [
+          "Stand in front of regulator and open quickly",
+          "Stand to the side and open slowly",
+          "Open fully in one motion",
+          "Tap the valve with a hammer first"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Hot Work – Cylinder Safety"
+      },
+      // A-2 Q32
+      {
+        q: "Before lighting an oxy-fuel torch you must:",
+        opts: [
+          "Purge the hoses and check for leaks",
+          "Remove flashback arrestors",
+          "Use matches inside a pocket",
+          "Point torch at your boots"
+        ],
+        answer: 0,
+        task: "A-2",
+        ref: "Hot Work – Setup"
+      },
+      // A-2 Q33
+      {
+        q: "During soldering, flux is used mainly to:",
+        opts: [
+          "Cool the joint",
+          "Remove oxides and help solder flow",
+          "Increase pipe strength",
+          "Colour the solder"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Hot Work – Flux"
+      },
+      // A-2 Q34
+      {
+        q: "When soldering copper joints, the correct sequence is:",
+        opts: [
+          "Apply solder, then flux, then heat",
+          "Heat joint, apply flux, then solder",
+          "Clean, flux, heat, then apply solder",
+          "Heat, cool, then solder"
+        ],
+        answer: 2,
+        task: "A-2",
+        ref: "Hot Work – Soldering Steps"
+      },
+      // A-2 Q35
+      {
+        q: "A hot-work fire watch should remain on site:",
+        opts: [
+          "Only while flame is present",
+          "For a period after work to check for smoldering",
+          "Until lunch break",
+          "Never required"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Hot Work – Fire Watch"
+      },
+      // A-2 Q36
+      {
+        q: "When using a copper tubing bender, the main purpose is to:",
+        opts: [
+          "Cut tubing",
+          "Make smooth bends without kinking",
+          "Measure pipe length",
+          "Thread tubing"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Tools – Tubing Bender"
+      },
+      // A-2 Q37
+      {
+        q: "Which tool is best for cutting a vertical pipe flush with floor level?",
+        opts: [
+          "External pipe cutter",
+          "Reciprocating saw",
+          "Internal pipe cutter",
+          "Cold chisel and hammer"
+        ],
+        answer: 2,
+        task: "A-2",
+        ref: "Tools – Internal Cutter"
+      },
+      // A-2 Q38
+      {
+        q: "Before using a cordless impact driver, you should:",
+        opts: [
+          "Remove all safety labels",
+          "Ensure correct bit is engaged firmly and battery is charged",
+          "Hit the chuck with a hammer",
+          "Remove the guard"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Tools – Impact Driver"
+      },
+      // A-2 Q39
+      {
+        q: "A toe board on a scaffold platform is primarily intended to:",
+        opts: [
+          "Support planks",
+          "Prevent tools and materials from falling",
+          "Provide ladder access",
+          "Decorate the scaffold"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Access – Scaffolds"
+      },
+      // A-2 Q40
+      {
+        q: "When moving a ladder, you should:",
+        opts: [
+          "Leave tools on the top step",
+          "Carry it horizontally with care for others",
+          "Drag it by one rail behind you",
+          "Throw it off balconies"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Access – Ladder Handling"
+      },
+      // A-2 Q41
+      {
+        q: "Using a drill press safely includes:",
+        opts: [
+          "Holding work by hand",
+          "Clamping work and using correct speed",
+          "Removing all guards",
+          "Wearing loose clothing"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Tools – Drill Press"
+      },
+      // A-2 Q42
+      {
+        q: "When lifting a bundle of pipe with a crane, which is good practice?",
+        opts: [
+          "Stand under the load",
+          "Walk in the fall zone",
+          "Use appropriate slings and keep people clear",
+          "Guide load by grabbing the hook"
+        ],
+        answer: 2,
+        task: "A-2",
+        ref: "Rigging – Crane Safety"
+      },
+      // A-2 Q43
+      {
+        q: "If a rigging hook is found with a visible crack, you must:",
+        opts: [
+          "Paint over crack and reuse",
+          "Use only on light loads",
+          "Remove from service and replace",
+          "Straighten it with a hammer"
+        ],
+        answer: 2,
+        task: "A-2",
+        ref: "Rigging – Hook Inspection"
+      },
+      // A-2 Q44
+      {
+        q: "Most manufacturers require power tools to be:",
+        opts: [
+          "Cleaned with solvents regularly",
+          "Lubricated and stored dry according to instructions",
+          "Always left outdoors",
+          "Repaired only with homemade parts"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Tools – Maintenance"
+      },
+      // A-2 Q45
+      {
+        q: "Before use, ladders should be inspected for:",
+        opts: [
+          "Correct colour",
+          "Cracks, bent rungs, loose hardware",
+          "Dust only",
+          "Paint drips"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Access – Ladder Inspection"
+      },
+      // A-2 Q46
+      {
+        q: "When working from an aerial lift, fall protection is normally:",
+        opts: [
+          "Not required",
+          "Required by tying off to the approved anchor on the lift",
+          "Done by holding the guardrail",
+          "Optional if the work is quick"
+        ],
+        answer: 1,
+        task: "A-2",
+        ref: "Access – Aerial Lift Fall Protection"
+      },
+
+      // =========================
+      // TASK A-3 – 40 QUESTIONS
+      // =========================
+      // Planning, materials, documentation, drawings
+      // A-3 Q1
+      {
+        q: "A material take-off (MTO) is mainly used to:",
+        opts: [
+          "Measure noise levels",
+          "List materials and quantities needed for a job",
+          "Record daily attendance",
+          "Label tool boxes"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Organizing – Material Take-off"
+      },
+      // A-3 Q2
+      {
+        q: "A work order usually contains:",
+        opts: [
+          "Tool inventory only",
+          "Description of work, location, and sometimes time on site",
+          "Weather forecast",
+          "Worker home addresses"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Organizing – Work Orders"
+      },
+      // A-3 Q3
+      {
+        q: "As-built drawings are created to:",
+        opts: [
+          "Show original design intent",
+          "Record actual installation locations and changes",
+          "Replace specifications",
+          "Set worker wages"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Organizing – As-built Drawings"
+      },
+      // A-3 Q4
+      {
+        q: "The title block on a drawing normally includes:",
+        opts: [
+          "Daily crew list",
+          "Drawing title, scale, date and revision info",
+          "Weather data",
+          "Invoice numbers"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Drawings – Title Block"
+      },
+      // A-3 Q5
+      {
+        q: "A site plan is most useful for locating:",
+        opts: [
+          "Fixture rough-in heights",
+          "Building location, property lines and underground services",
+          "Electrical panel schedules",
+          "Roof drainage details only"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Drawings – Site Plan"
+      },
+      // A-3 Q6
+      {
+        q: "Mechanical drawings usually show:",
+        opts: [
+          "Only electrical circuits",
+          "Piping, ductwork, and mechanical equipment layouts",
+          "Landscaping details",
+          "Architectural finishes only"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Drawings – Mechanical"
+      },
+      // A-3 Q7
+      {
+        q: "Architectural floor plans are mainly used to:",
+        opts: [
+          "Locate structural connections",
+          "Find room layouts and fixture locations",
+          "Size pumps",
+          "Locate manholes off-site"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Drawings – Architectural"
+      },
+      // A-3 Q8
+      {
+        q: "Single-line piping drawings show:",
+        opts: [
+          "Pipe walls with two parallel lines",
+          "Simplified routes and sizes with one line per pipe",
+          "Only valves",
+          "Only structural beams"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Drawings – Single Line"
+      },
+      // A-3 Q9
+      {
+        q: "Double-line drawings are typically used when:",
+        opts: [
+          "Approximate layout is sufficient",
+          "More accurate scaled representation is needed",
+          "No dimensions are required",
+          "Only electrical is shown"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Drawings – Double Line"
+      },
+      // A-3 Q10
+      {
+        q: "A section view symbol on a drawing indicates:",
+        opts: [
+          "Location of a detail callout",
+          "A cut through the building to show interior details",
+          "A change order",
+          "Site topography"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Drawings – Sections"
+      },
+      // A-3 Q11
+      {
+        q: "Revision clouds and triangles on drawings are used to:",
+        opts: [
+          "Highlight areas of change",
+          "Decorate the print",
+          "Mark completed work",
+          "Show mechanical equipment"
+        ],
+        answer: 0,
+        task: "A-3",
+        ref: "Drawings – Revisions"
+      },
+      // A-3 Q12
+      {
+        q: "Specifications in a project manual describe:",
+        opts: [
+          "Only worker rules",
+          "Materials, workmanship, standards, and quality requirements",
+          "Labour rates",
+          "Delivery schedules"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Organizing – Specifications"
+      },
+      // A-3 Q13
+      {
+        q: "A Request for Information (RFI) is used when:",
+        opts: [
+          "Ordering materials",
+          "Requesting vacation",
+          "Clarification is needed on drawings or specifications",
+          "Recording time worked"
+        ],
+        answer: 2,
+        task: "A-3",
+        ref: "Organizing – RFI"
+      },
+      // A-3 Q14
+      {
+        q: "Scaling 1:50 on a drawing means:",
+        opts: [
+          "1 unit on drawing equals 50 units in real life",
+          "50 units on drawing equals 1 in real life",
+          "Drawing and real life are same size",
+          "Drawing is 50 times bigger"
+        ],
+        answer: 0,
+        task: "A-3",
+        ref: "Drawings – Scale"
+      },
+      // A-3 Q15
+      {
+        q: "At a scale of 1/4\" = 1'-0\", a 3\" line on the drawing represents:",
+        opts: ["6 ft", "9 ft", "12 ft", "15 ft"],
+        answer: 1,
+        task: "A-3",
+        ref: "Drawings – Scale Example"
+      },
+      // A-3 Q16
+      {
+        q: "When organizing work, which step should usually come first?",
+        opts: [
+          "Start installation immediately",
+          "Review drawings, specs, and scope of work",
+          "Order every possible material",
+          "Wait for inspector"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Organizing – Planning"
+      },
+      // A-3 Q17
+      {
+        q: "Sequencing tasks properly helps to:",
+        opts: [
+          "Increase rework",
+          "Reduce clashes and delays with other trades",
+          "Cause overtime",
+          "Avoid using drawings"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Organizing – Sequencing"
+      },
+      // A-3 Q18
+      {
+        q: "Kitting materials for a specific task means:",
+        opts: [
+          "Mixing all materials in one bin",
+          "Pre-grouping tools and materials needed for that task",
+          "Storing all materials at the gate",
+          "Ordering extra tools"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Organizing – Kitting"
+      },
+      // A-3 Q19
+      {
+        q: "When storing materials, good practice includes:",
+        opts: [
+          "Blocking fire exits",
+          "Labeling and separating materials by type and size",
+          "Stacking unsafely high",
+          "Ignoring manufacturer storage requirements"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Organizing – Material Storage"
+      },
+      // A-3 Q20
+      {
+        q: "Which document is most useful when installing equipment according to manufacturer requirements?",
+        opts: [
+          "Time sheet",
+          "Manufacturer's installation instructions",
+          "Daily report",
+          "Pay stub"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Documentation – Manufacturer Instructions"
+      },
+      // A-3 Q21
+      {
+        q: "Daily reports written by the foreperson often record:",
+        opts: [
+          "Lunch menus",
+          "Weather, manpower, and major activities",
+          "Personal opinions only",
+          "Bank account numbers"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Organizing – Daily Reports"
+      },
+      // A-3 Q22
+      {
+        q: "A bill of materials usually lists:",
+        opts: [
+          "Worker addresses",
+          "Material descriptions and quantities for ordering",
+          "Site hazards",
+          "Training records"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Organizing – Bill of Materials"
+      },
+      // A-3 Q23
+      {
+        q: "Coordinating with other trades is important because it:",
+        opts: [
+          "Increases hidden work",
+          "Reduces conflicts in space and schedule",
+          "Prevents use of drawings",
+          "Only helps supervisors"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Organizing – Coordination"
+      },
+      // A-3 Q24
+      {
+        q: "On a mechanical plan, a circle with letters in it next to a fixture usually refers to:",
+        opts: [
+          "Elevation mark",
+          "Valve schedule",
+          "Fixture or equipment schedule",
+          "Revision symbol"
+        ],
+        answer: 2,
+        task: "A-3",
+        ref: "Drawings – Schedules"
+      },
+      // A-3 Q25
+      {
+        q: "When measurements on site differ from drawings, the best first step is to:",
+        opts: [
+          "Ignore the difference",
+          "Cut materials to drawing size only",
+          "Notify your supervisor and request clarification",
+          "Make changes without documentation"
+        ],
+        answer: 2,
+        task: "A-3",
+        ref: "Organizing – Field Conditions"
+      },
+      // A-3 Q26
+      {
+        q: "Project specifications often reference codes and standards, which means:",
+        opts: [
+          "They are optional guidelines",
+          "They are legally binding requirements to follow",
+          "They replace drawings",
+          "They apply only to electricians"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Documentation – Codes & Standards"
+      },
+      // A-3 Q27
+      {
+        q: "A change order is issued when:",
+        opts: [
+          "Weather changes",
+          "Owners change scope or design after contract award",
+          "Workers change job site",
+          "Paydays change"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Organizing – Change Orders"
+      },
+      // A-3 Q28
+      {
+        q: "Which drawing would you use to locate exterior underground sanitary piping?",
+        opts: ["Reflected ceiling plan", "Site/civil plan", "Electrical one-line", "Finish schedule"],
+        answer: 1,
+        task: "A-3",
+        ref: "Drawings – Site Underground"
+      },
+      // A-3 Q29
+      {
+        q: "A legend on a drawing provides:",
+        opts: [
+          "A list of room numbers only",
+          "Meanings of symbols and abbreviations used",
+          "Payroll information",
+          "Tool inventory"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Drawings – Legend"
+      },
+      // A-3 Q30
+      {
+        q: "Reading and understanding the scope of work helps you:",
+        opts: [
+          "Know exactly which tasks are included",
+          "Choose personal vacation",
+          "Set wages for others",
+          "Avoid using drawings"
+        ],
+        answer: 0,
+        task: "A-3",
+        ref: "Organizing – Scope"
+      },
+      // A-3 Q31
+      {
+        q: "Three common schedule constraints that affect planning are:",
+        opts: [
+          "Weather, budget, and labour availability",
+          "Colour, smell, and taste",
+          "Only fuel prices",
+          "Only supervisor's opinion"
+        ],
+        answer: 0,
+        task: "A-3",
+        ref: "Organizing – Constraints"
+      },
+      // A-3 Q32
+      {
+        q: "Manufacturer data sheets often include:",
+        opts: [
+          "Safety information, capacities, and connection details",
+          "Worker evaluations",
+          "Project contracts",
+          "Site maps"
+        ],
+        answer: 0,
+        task: "A-3",
+        ref: "Documentation – Data Sheets"
+      },
+      // A-3 Q33
+      {
+        q: "When reading an elevation drawing, the numbers next to level markers represent:",
+        opts: [
+          "Pressure ratings",
+          "Height reference compared to a datum",
+          "Pipe diameters",
+          "Flow rates"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Drawings – Elevations"
+      },
+      // A-3 Q34
+      {
+        q: "A reflected ceiling plan is used mainly to locate:",
+        opts: [
+          "Roof drains, lighting, and overhead services",
+          "Floor drains only",
+          "Site grading",
+          "Foundation details"
+        ],
+        answer: 0,
+        task: "A-3",
+        ref: "Drawings – Reflected Ceiling Plan"
+      },
+      // A-3 Q35
+      {
+        q: "Before ordering long-lead items (e.g., boilers), you should:",
+        opts: [
+          "Assume any model will work",
+          "Confirm specifications, dimensions, and schedule with supplier",
+          "Order whatever is cheapest",
+          "Skip documentation"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Organizing – Procurement"
+      },
+      // A-3 Q36
+      {
+        q: "Scheduling work in a small plant shutdown requires:",
+        opts: [
+          "No planning",
+          "Close coordination to complete tasks in limited time",
+          "Avoiding other trades",
+          "Ignoring safety procedures"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Organizing – Shutdown Planning"
+      },
+      // A-3 Q37
+      {
+        q: "When reading a pipe schedule on drawings, you can find:",
+        opts: [
+          "Type and size of piping systems",
+          "Weather forecast",
+          "Worker names",
+          "Equipment serial numbers"
+        ],
+        answer: 0,
+        task: "A-3",
+        ref: "Drawings – Piping Schedules"
+      },
+      // A-3 Q38
+      {
+        q: "A simple bar chart (Gantt chart) schedule shows:",
+        opts: [
+          "Load calculations",
+          "Tasks over time and their durations",
+          "Only safety incidents",
+          "Material prices"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Organizing – Schedules"
+      },
+      // A-3 Q39
+      {
+        q: "Organizing a service call typically includes:",
+        opts: [
+          "Bringing any random tools",
+          "Reviewing work order, loading typical tools/materials, and contacting customer",
+          "Ignoring work history",
+          "Skipping safety checks"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Organizing – Service Work"
+      },
+      // A-3 Q40
+      {
+        q: "When multiple crews are on a large project, communication between forepersons is important to:",
+        opts: [
+          "Hide information",
+          "Coordinate tasks and avoid conflicts",
+          "Increase paperwork only",
+          "Delay other trades"
+        ],
+        answer: 1,
+        task: "A-3",
+        ref: "Organizing – Multi-crew Coordination"
+      },
+
+      // =========================
+      // TASK A-4 – 68 QUESTIONS
+      // =========================
+      // Layout, pipe length calcs, supports, sleeves, commissioning, excavation, fire stopping, protection
+      // A-4 Q1
+      {
+        q: "When laying out sanitary drainage, pipe slope is usually expressed as:",
+        opts: ["Pressure", "Voltage", "Percentage or mm per m", "Temperature"],
+        answer: 2,
+        task: "A-4",
+        ref: "Piping – Slope"
+      },
+      // A-4 Q2
+      {
+        q: "Trap arms connect:",
+        opts: [
+          "Vents to roof drains",
+          "Fixture traps to the sanitary system with proper venting",
+          "Water mains to meters",
+          "Storm drains to gutters"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Trap Arms"
+      },
+      // A-4 Q3
+      {
+        q: "Developed length of pipe means:",
+        opts: [
+          "Straight-line distance only",
+          "Actual length along pipe centerline including fittings",
+          "Distance between fittings only",
+          "Vertical height only"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Developed Length"
+      },
+      // A-4 Q4
+      {
+        q: "Fitting allowance is:",
+        opts: [
+          "Extra pipe length used to make bends",
+          "Portion of fitting that adds to pipe length when calculating cuts",
+          "Amount cut off after threading",
+          "Distance between hangers"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Fitting Allowance"
+      },
+      // A-4 Q5
+      {
+        q: "To calculate vertical rise of a pipe with slope 1/50 over 10 m, you would use:",
+        opts: ["10 ÷ 50", "50 ÷ 10", "10 + 50", "10 x 50"],
+        answer: 0,
+        task: "A-4",
+        ref: "Math – Slope Calculation"
+      },
+      // A-4 Q6
+      {
+        q: "Pipe support spacing depends mainly on:",
+        opts: [
+          "Pipe colour",
+          "Pipe material and size",
+          "Worker preference",
+          "Weather"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Supports"
+      },
+      // A-4 Q7
+      {
+        q: "Clevis hangers are commonly used to support:",
+        opts: [
+          "Light fixtures",
+          "Horizontal piping from overhead structure",
+          "Roof decking",
+          "Electrical cable"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Hangers"
+      },
+      // A-4 Q8
+      {
+        q: "A trapeze hanger assembly is used when:",
+        opts: [
+          "Supporting multiple pipes from common supports",
+          "Only one pipe is present",
+          "Supporting light fixtures",
+          "Hanging doors"
+        ],
+        answer: 0,
+        task: "A-4",
+        ref: "Piping – Trapeze"
+      },
+      // A-4 Q9
+      {
+        q: "Anchors for hangers into concrete overhead are often:",
+        opts: [
+          "Wood screws",
+          "Drop-in or expansion anchors",
+          "Nails",
+          "Staples"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Supports – Anchors"
+      },
+      // A-4 Q10
+      {
+        q: "Sleeves in walls and floors allow:",
+        opts: [
+          "Paint to stick better",
+          "Pipes to pass through with space for movement and fire stopping",
+          "Extra storage",
+          "Electrical grounding"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Sleeves"
+      },
+      // A-4 Q11
+      {
+        q: "Sleeves through fire-rated assemblies must usually be:",
+        opts: [
+          "Left open for ventilation",
+          "Filled with fire-stopping systems tested for that assembly",
+          "Stuffed with rags",
+          "Foamed with any product"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Fire Stopping"
+      },
+      // A-4 Q12
+      {
+        q: "Commissioning a new water system typically includes:",
+        opts: [
+          "Painting pipes only",
+          "Flushing, pressure testing, and verifying operation",
+          "Skipping tests",
+          "Removing all valves"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Commissioning – Overview"
+      },
+      // A-4 Q13
+      {
+        q: "Hydrostatic testing means:",
+        opts: [
+          "Testing with air only",
+          "Testing with water at specified pressure",
+          "Testing with steam",
+          "Testing with nitrogen"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Commissioning – Hydrostatic Test"
+      },
+      // A-4 Q14
+      {
+        q: "Before pressure testing a line, you should:",
+        opts: [
+          "Leave debris inside",
+          "Flush and vent air, ensure valves and caps are correctly installed",
+          "Remove all supports",
+          "Use any available pump"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Commissioning – Preparation"
+      },
+      // A-4 Q15
+      {
+        q: "Documenting test pressure, medium, and duration is important because:",
+        opts: [
+          "It decorates the page",
+          "It provides evidence that code-required tests were done",
+          "It replaces drawings",
+          "It sets wages"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Commissioning – Documentation"
+      },
+      // A-4 Q16
+      {
+        q: "Excavation deeper than about 1.2 m in unstable soil requires:",
+        opts: [
+          "No controls",
+          "Workers to jump frequently",
+          "Shoring, benching, sloping, or trench boxes as required",
+          "Only rain gear"
+        ],
+        answer: 2,
+        task: "A-4",
+        ref: "Excavation – Trench Safety"
+      },
+      // A-4 Q17
+      {
+        q: "A locate service (e.g., call before you dig) is used to:",
+        opts: [
+          "Find weather",
+          "Locate buried utilities before excavation",
+          "Check pay rates",
+          "Find parking"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Excavation – Utility Locate"
+      },
+      // A-4 Q18
+      {
+        q: "Trench spoil piles should be placed:",
+        opts: [
+          "Right at the edge of trench",
+          "At least a safe distance back from the edge",
+          "In the trench",
+          "On the road only"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Excavation – Spoil Placement"
+      },
+      // A-4 Q19
+      {
+        q: "Bedding material for underground pipe should be:",
+        opts: [
+          "Large rocks",
+          "Frozen soil",
+          "Suitable sand or fine gravel",
+          "Rebar offcuts"
+        ],
+        answer: 2,
+        task: "A-4",
+        ref: "Excavation – Bedding"
+      },
+      // A-4 Q20
+      {
+        q: "Backfilling in layers with compaction around pipe helps to:",
+        opts: [
+          "Increase noise",
+          "Prevent settlement and pipe damage",
+          "Cool the ground",
+          "Reduce water flow"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Excavation – Backfill"
+      },
+      // A-4 Q21
+      {
+        q: "Water lines in same trench as sanitary lines are usually placed:",
+        opts: [
+          "Directly under sanitary lines",
+          "Above and horizontally offset as per code",
+          "Intertwined",
+          "In any position"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Excavation – Trench Layout"
+      },
+      // A-4 Q22
+      {
+        q: "Cleanouts in sanitary piping are installed mainly to:",
+        opts: [
+          "Vent the system",
+          "Allow cleaning and maintenance access",
+          "Support pipe",
+          "Provide water supply"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Cleanouts"
+      },
+      // A-4 Q23
+      {
+        q: "Water hammer is a pressure surge caused by:",
+        opts: [
+          "Slowly closing valves",
+          "Rapid changes in flow, such as quick valve closure",
+          "Low water temperature",
+          "Pipe colour"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Water Hammer"
+      },
+      // A-4 Q24
+      {
+        q: "One method to reduce water hammer is to install:",
+        opts: [
+          "Glow lights",
+          "Larger traps",
+          "Water hammer arrestors",
+          "More tees"
+        ],
+        answer: 2,
+        task: "A-4",
+        ref: "Piping – Water Hammer Arrestor"
+      },
+      // A-4 Q25
+      {
+        q: "Expansion loops or joints may be used on long hot water lines to:",
+        opts: [
+          "Increase friction",
+          "Allow for thermal expansion and contraction",
+          "Decrease flow",
+          "Reduce pipe size"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Expansion"
+      },
+      // A-4 Q26
+      {
+        q: "Protective plates (stud guards) are installed on studs when piping passes through to:",
+        opts: [
+          "Support drywall",
+          "Protect pipes from nails and screws",
+          "Increase sound transmission",
+          "Hold insulation"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Protection"
+      },
+      // A-4 Q27
+      {
+        q: "Temporary plastic caps on open pipe ends mainly:",
+        opts: [
+          "Improve appearance only",
+          "Prevent debris entry and damage during construction",
+          "Increase pressure",
+          "Reduce slope"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Protection"
+      },
+      // A-4 Q28
+      {
+        q: "To protect pipes from freezing in unheated spaces you might:",
+        opts: [
+          "Leave windows open",
+          "Use insulation and heat tracing as required",
+          "Use thinner pipe",
+          "Paint pipes only"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Freeze Protection"
+      },
+      // A-4 Q29
+      {
+        q: "Housekeeping pads beneath equipment serve to:",
+        opts: [
+          "Decorate floor",
+          "Provide level base and protect floor surface",
+          "Store tools",
+          "Collect oil only"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Equipment – Housekeeping Pads"
+      },
+      // A-4 Q30
+      {
+        q: "When laying out fixture rough-in locations, you should:",
+        opts: [
+          "Guess locations",
+          "Measure from control lines and dimensions shown on drawings",
+          "Use only tape without drawings",
+          "Ask another trade"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Layout – Fixtures"
+      },
+      // A-4 Q31
+      {
+        q: "Piping installed in finished areas must consider:",
+        opts: [
+          "Aesthetics, access, and noise",
+          "Weather only",
+          "Nothing, it will be hidden",
+          "Light bulb colour"
+        ],
+        answer: 0,
+        task: "A-4",
+        ref: "Piping – Finishes"
+      },
+      // A-4 Q32
+      {
+        q: "Non-destructive testing (NDT) of a weld includes methods such as:",
+        opts: [
+          "Radiography or ultrasonic testing",
+          "Cutting the pipe apart",
+          "Breaking the weld",
+          "Melting the pipe"
+        ],
+        answer: 0,
+        task: "A-4",
+        ref: "Testing – NDT"
+      },
+      // A-4 Q33
+      {
+        q: "Destructive testing involves:",
+        opts: [
+          "Leaving system in service",
+          "Destroying samples to determine properties",
+          "Visual only",
+          "Listening only"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Testing – Destructive"
+      },
+      // A-4 Q34
+      {
+        q: "Air testing of piping can be more hazardous than water testing because:",
+        opts: [
+          "Air is heavier",
+          "Compressed air stores more energy that can release suddenly",
+          "Water leaks are harder to see",
+          "Gauges don't work"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Testing – Air Test Safety"
+      },
+      // A-4 Q35
+      {
+        q: "During sanitary stack testing, test plugs or test balls are used to:",
+        opts: [
+          "Increase flow",
+          "Seal sections of pipe to hold water for test",
+          "Measure pressure",
+          "Support pipe"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Testing – Sanitary Systems"
+      },
+      // A-4 Q36
+      {
+        q: "Line blinds, such as spectacle blinds, are used to:",
+        opts: [
+          "Increase flow",
+          "Provide positive isolation in piping systems",
+          "Measure temperature",
+          "Support pipe"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Isolation – Blinds"
+      },
+      // A-4 Q37
+      {
+        q: "A spectacle blind has two positions:",
+        opts: [
+          "Open and closed, rotated to either side",
+          "High and low pressure",
+          "Vertical and horizontal",
+          "Hot and cold"
+        ],
+        answer: 0,
+        task: "A-4",
+        ref: "Isolation – Spectacle Blind"
+      },
+      // A-4 Q38
+      {
+        q: "When testing a system, gauges should be:",
+        opts: [
+          "Uncalibrated",
+          "Rated for at least the test pressure and in good condition",
+          "Covered with tape",
+          "Removed during test"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Testing – Gauges"
+      },
+      // A-4 Q39
+      {
+        q: "Pipe identification (colour bands and labels) helps to:",
+        opts: [
+          "Decorate the system",
+          "Identify contents and flow direction for safety and maintenance",
+          "Hide leaks",
+          "Increase system pressure"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Identification"
+      },
+      // A-4 Q40
+      {
+        q: "Protecting finished fixtures during construction includes:",
+        opts: [
+          "Leaving them uncovered",
+          "Covering with protective wrap and following site rules",
+          "Using them as tool benches",
+          "Storing chemicals inside"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Protection – Fixtures"
+      },
+      // A-4 Q41
+      {
+        q: "Slope of horizontal drainage lines must be:",
+        opts: [
+          "Enough to provide self-cleansing velocity",
+          "As flat as possible",
+          "As steep as possible always",
+          "Zero to avoid noise"
+        ],
+        answer: 0,
+        task: "A-4",
+        ref: "Piping – Drainage Slope"
+      },
+      // A-4 Q42
+      {
+        q: "During commissioning of a hydronic loop, you typically:",
+        opts: [
+          "Leave air in system",
+          "Purge air, fill, pressurize, and check operation of pumps and valves",
+          "Remove pumps",
+          "Leave valves closed"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Commissioning – Hydronic"
+      },
+      // A-4 Q43
+      {
+        q: "When measuring an offset in piping using 45° elbows, the travel (hypotenuse) equals:",
+        opts: [
+          "Offset ÷ 1.414",
+          "Offset × 1.414",
+          "Offset × 2",
+          "Offset ÷ 2"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Math – Offsets"
+      },
+      // A-4 Q44
+      {
+        q: "A piping detail drawing with enlarged view is used to:",
+        opts: [
+          "Show less information",
+          "Clarify complex connection or tight area",
+          "Replace specs",
+          "Show landscaping"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Drawings – Details"
+      },
+      // A-4 Q45
+      {
+        q: "Installing pipe sleeves before concrete is poured helps to:",
+        opts: [
+          "Avoid later coring or cutting structural members",
+          "Increase concrete strength",
+          "Make forms heavier",
+          "Reduce accuracy"
+        ],
+        answer: 0,
+        task: "A-4",
+        ref: "Piping – Sleeves in Concrete"
+      },
+      // A-4 Q46
+      {
+        q: "During underground installation in cold climates, water pipes are usually buried:",
+        opts: [
+          "Above frost line",
+          "At or below frost depth as per code",
+          "On surface",
+          "In roof"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Frost Depth"
+      },
+      // A-4 Q47
+      {
+        q: "Vent terminals on roofs must consider:",
+        opts: [
+          "Snow accumulation and clearances from openings",
+          "Colour only",
+          "Orientation to sun",
+          "Floor finish below"
+        ],
+        answer: 0,
+        task: "A-4",
+        ref: "Piping – Roof Vents"
+      },
+      // A-4 Q48
+      {
+        q: "Prior to backfilling, inspection of underground piping checks:",
+        opts: [
+          "Pipe colour",
+          "Correct slope, bedding, joints, and required tests",
+          "Site fencing",
+          "Worker lunch times"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Excavation – Inspection"
+      },
+      // A-4 Q49
+      {
+        q: "A laser level is used in layout to:",
+        opts: [
+          "Measure voltage",
+          "Establish level reference for pipe elevations",
+          "Measure pipe wall thickness",
+          "Test water quality"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Layout – Leveling"
+      },
+      // A-4 Q50
+      {
+        q: "Pipe hangers should be adjusted so that:",
+        opts: [
+          "Pipes sag between supports",
+          "Pipes are supported evenly at the required slope",
+          "Pipes rest on other trades' work",
+          "Supports are tight only at one end"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Hanger Adjustment"
+      },
+      // A-4 Q51
+      {
+        q: "Pipe sleeves in floors must usually project above slab to:",
+        opts: [
+          "Collect dirt",
+          "Allow for finish and prevent concrete from flowing into sleeve",
+          "Support rebar",
+          "Make walking difficult"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Sleeve Installation"
+      },
+      // A-4 Q52
+      {
+        q: "Firestop collars are used around plastic pipe to:",
+        opts: [
+          "Support weight only",
+          "Allow plastic to melt freely",
+          "Provide intumescent material that closes opening when pipe melts",
+          "Colour code the pipe"
+        ],
+        answer: 2,
+        task: "A-4",
+        ref: "Fire Stopping – Collars"
+      },
+      // A-4 Q53
+      {
+        q: "Intumescent firestop sealants:",
+        opts: [
+          "Shrink when heated",
+          "Expand when exposed to heat to seal openings",
+          "Turn into water",
+          "Only change colour"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Fire Stopping – Intumescent"
+      },
+      // A-4 Q54
+      {
+        q: "System labels (e.g., 'Domestic Cold Water') help during:",
+        opts: [
+          "Painting",
+          "Maintenance, repairs, and emergencies",
+          "Lunch breaks",
+          "Concrete pouring"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – System Labelling"
+      },
+      // A-4 Q55
+      {
+        q: "During commissioning, balancing valves are adjusted to:",
+        opts: [
+          "Change water chemistry",
+          "Distribute flows correctly to branches",
+          "Increase pipe diameter",
+          "Set equipment voltage"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Commissioning – Balancing"
+      },
+      // A-4 Q56
+      {
+        q: "To calculate the cut length of pipe for a threaded connection, you must account for:",
+        opts: [
+          "Thread engagement and fitting makeup",
+          "Only pipe OD",
+          "Only number of threads",
+          "Paint thickness"
+        ],
+        answer: 0,
+        task: "A-4",
+        ref: "Piping – Threaded Length"
+      },
+      // A-4 Q57
+      {
+        q: "When a drawing calls for an offset with two 45° elbows and a 300 mm offset, the travel is approximately:",
+        opts: ["212 mm", "300 mm", "424 mm", "600 mm"],
+        answer: 2,
+        task: "A-4",
+        ref: "Math – Offset Example"
+      },
+      // A-4 Q58
+      {
+        q: "Supports near pipe changes in direction (elbows) are installed to:",
+        opts: [
+          "Decorate the pipe",
+          "Help resist thrust forces and movement",
+          "Hold insulation only",
+          "Provide hanging points for lights"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Direction Changes"
+      },
+      // A-4 Q59
+      {
+        q: "Insulation on domestic hot water piping primarily helps to:",
+        opts: [
+          "Increase weight",
+          "Reduce heat loss and condensation",
+          "Change pressure",
+          "Improve pipe strength"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Insulation"
+      },
+      // A-4 Q60
+      {
+        q: "Condensate drains from equipment are usually piped:",
+        opts: [
+          "Into sanitary or dedicated drains according to code",
+          "Onto floors only",
+          "Into storm only without traps",
+          "Back into supply piping"
+        ],
+        answer: 0,
+        task: "A-4",
+        ref: "Piping – Condensate"
+      },
+      // A-4 Q61
+      {
+        q: "During flushing of a new water system, purpose is to:",
+        opts: [
+          "Increase pressure",
+          "Remove debris and contaminants",
+          "Cool the building",
+          "Test alarms"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Commissioning – Flushing"
+      },
+      // A-4 Q62
+      {
+        q: "Before leaving a job for the day, protecting partially installed systems includes:",
+        opts: [
+          "Leaving all valves open",
+          "Securing, capping open lines, and cleaning area",
+          "Removing all tags",
+          "Stacking materials in exits"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Protection – Daily Shutdown"
+      },
+      // A-4 Q63
+      {
+        q: "A floor drain trap seal prevents:",
+        opts: [
+          "Water flow",
+          "Sewer gases from entering the building",
+          "Concrete curing",
+          "Heat loss"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Trap Seal"
+      },
+      // A-4 Q64
+      {
+        q: "Trap seal loss can be reduced by installing:",
+        opts: [
+          "Backwater valves only",
+          "Trap primers where required",
+          "Bigger vents",
+          "Extra cleanouts"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Trap Primers"
+      },
+      // A-4 Q65
+      {
+        q: "When laying out vent piping, important considerations include:",
+        opts: [
+          "Vent termination height and distance from openings according to code",
+          "Only colour",
+          "Only pipe schedule",
+          "Only insulation type"
+        ],
+        answer: 0,
+        task: "A-4",
+        ref: "Piping – Venting"
+      },
+      // A-4 Q66
+      {
+        q: "Stack supports at base of tall vertical risers are used to:",
+        opts: [
+          "Reduce noise",
+          "Carry weight of vertical piping",
+          "Hold insulation",
+          "Protect from UV"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Piping – Riser Supports"
+      },
+      // A-4 Q67
+      {
+        q: "Protecting building structure during coring includes:",
+        opts: [
+          "Coring through beams without approval",
+          "Confirming with structural engineer and following details",
+          "Guessing locations",
+          "Using bigger bits than required"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Structural – Coring"
+      },
+      // A-4 Q68
+      {
+        q: "When commissioning plumbing systems, notifying owner and documenting results is important so that:",
+        opts: [
+          "Tools can be kept",
+          "Future maintenance personnel know test history and settings",
+          "Drawings can be destroyed",
+          "No records exist"
+        ],
+        answer: 1,
+        task: "A-4",
+        ref: "Commissioning – Turnover"
+      },
+
+      // =========================
+      // TASK A-5 – 8 QUESTIONS
+      // =========================
+      // Communication & mentoring
+      // A-5 Q1
+      {
+        q: "Active listening during a toolbox talk means you should:",
+        opts: [
+          "Interrupt often",
+          "Avoid eye contact",
+          "Pay attention, avoid distractions, and ask questions if unsure",
+          "Check your phone during the talk"
+        ],
+        answer: 2,
+        task: "A-5",
+        ref: "Communication – Active Listening"
+      },
+      // A-5 Q2
+      {
+        q: "Clear communication on site helps to:",
+        opts: [
+          "Increase errors",
+          "Improve safety and productivity",
+          "Create conflicts",
+          "Avoid following procedures"
+        ],
+        answer: 1,
+        task: "A-5",
+        ref: "Communication – Benefits"
+      },
+      // A-5 Q3
+      {
+        q: "When giving instructions to a new apprentice, a good approach is to:",
+        opts: [
+          "Speak quickly using complex jargon",
+          "Demonstrate the task and check their understanding",
+          "Assume they already know",
+          "Refuse to answer questions"
+        ],
+        answer: 1,
+        task: "A-5",
+        ref: "Mentoring – Instruction"
+      },
+      // A-5 Q4
+      {
+        q: "Constructive feedback should:",
+        opts: [
+          "Attack the person",
+          "Focus on specific behaviours and how to improve",
+          "Be sarcastic",
+          "Be delayed for months"
+        ],
+        answer: 1,
+        task: "A-5",
+        ref: "Mentoring – Feedback"
+      },
+      // A-5 Q5
+      {
+        q: "In the apprenticeship system, a journeyperson is mainly responsible for:",
+        opts: [
+          "Ignoring apprentices",
+          "Providing safe supervision and training",
+          "Writing exams",
+          "Setting provincial wages"
+        ],
+        answer: 1,
+        task: "A-5",
+        ref: "Mentoring – Journeyperson Role"
+      },
+      // A-5 Q6
+      {
+        q: "A respectful workplace requires workers to:",
+        opts: [
+          "Accept harassment",
+          "Participate in bullying",
+          "Treat others with respect and follow company policies",
+          "Ignore offensive behaviour"
+        ],
+        answer: 2,
+        task: "A-5",
+        ref: "Communication – Respect"
+      },
+      // A-5 Q7
+      {
+        q: "When a safety concern is not being addressed by a coworker, you should:",
+        opts: [
+          "Stay silent",
+          "Follow unsafe instructions",
+          "Raise the concern with your supervisor or safety rep",
+          "Make jokes about it"
+        ],
+        answer: 2,
+        task: "A-5",
+        ref: "Communication – Speaking Up"
+      },
+      // A-5 Q8
+      {
+        q: "When mentoring someone who learns best by doing, you should:",
+        opts: [
+          "Only give them manuals to read",
+          "Demonstrate and then let them try under supervision",
+          "Avoid letting them work",
+          "Only lecture them"
+        ],
+        answer: 1,
+        task: "A-5",
+        ref: "Mentoring – Learning Styles"
+      }
+    ];
+
+    const NUM_QUESTIONS = 25;
+    let currentQuestions = [];
+
+    function getRandomQuestions(num) {
+      const shuffled = [...questionBank].sort(() => Math.random() - 0.5);
+      return shuffled.slice(0, num);
+    }
+
+    function renderQuiz() {
+      const quizDiv = document.getElementById("quiz");
+      quizDiv.innerHTML = "";
+      currentQuestions.forEach((q, index) => {
+        const qDiv = document.createElement("div");
+        qDiv.className = "question";
+
+        const header = document.createElement("div");
+        header.className = "question-header";
+        header.textContent = "Question " + (index + 1) + ": " + q.q;
+        qDiv.appendChild(header);
+
+        const meta = document.createElement("div");
+        meta.className = "meta";
+        meta.textContent = "Task: " + q.task + " | Reference: " + q.ref;
+        qDiv.appendChild(meta);
+
+        const optsDiv = document.createElement("div");
+        optsDiv.className = "options";
+
+        q.opts.forEach((opt, optIndex) => {
+          const id = "q" + index + "_opt" + optIndex;
+          const label = document.createElement("label");
+          const radio = document.createElement("input");
+          radio.type = "radio";
+          radio.name = "question" + index;
+          radio.value = optIndex;
+          radio.id = id;
+          label.htmlFor = id;
+          label.appendChild(radio);
+          label.appendChild(document.createTextNode(" " + opt));
+          optsDiv.appendChild(label);
+        });
+
+        qDiv.appendChild(optsDiv);
+        quizDiv.appendChild(qDiv);
+      });
+    }
+
+    function gradeQuiz() {
+      if (currentQuestions.length === 0) return;
+
+      let numCorrect = 0;
+      let detailsHtml = "";
+
+      const taskTotals = {};
+      const taskCorrect = {};
+
+      currentQuestions.forEach((q, index) => {
+        if (!taskTotals[q.task]) {
+          taskTotals[q.task] = 0;
+          taskCorrect[q.task] = 0;
+        }
+        taskTotals[q.task]++;
+
+        const radios = document.getElementsByName("question" + index);
+        let selectedIndex = null;
+        for (let r of radios) {
+          if (r.checked) {
+            selectedIndex = parseInt(r.value, 10);
+            break;
+          }
+        }
+
+        if (selectedIndex === q.answer) {
+          numCorrect++;
+          taskCorrect[q.task]++;
+        } else {
+          const yourAnswerText =
+            selectedIndex !== null ? q.opts[selectedIndex] : "No answer selected";
+          const correctText = q.opts[q.answer];
+
+          detailsHtml += `
+            <div class="wrong-answer">
+              <div><strong>Question ${index + 1}</strong> (Task ${q.task} – ${q.ref})</div>
+              <div>${q.q}</div>
+              <div class="your-text">Your answer: ${yourAnswerText}</div>
+              <div class="correct-text">Correct answer: ${correctText}</div>
+            </div>
+          `;
+        }
+      });
+
+      let breakdownHtml = "<h3>Score by Task</h3><ul>";
+      const orderedTasks = ["A-1", "A-2", "A-3", "A-4", "A-5"];
+      orderedTasks.forEach(task => {
+        if (taskTotals[task]) {
+          const correct = taskCorrect[task] || 0;
+          breakdownHtml += `<li>${task}: ${correct} / ${taskTotals[task]}</li>`;
+        }
+      });
+      breakdownHtml += "</ul>";
+
+      const resultsDiv = document.getElementById("results");
+      resultsDiv.innerHTML = `
+        <h2>Your Score: ${numCorrect} / ${currentQuestions.length}</h2>
+        <p>Total questions in bank: ${questionBank.length}</p>
+        ${breakdownHtml}
+        <h3>Review of Incorrect or Skipped Questions</h3>
+        ${detailsHtml || "<p>Nice work! You answered all questions correctly.</p>"}
+      `;
+    }
+
+    function newQuiz() {
+      currentQuestions = getRandomQuestions(NUM_QUESTIONS);
+      document.getElementById("results").innerHTML = "";
+      renderQuiz();
+    }
+
+    document.getElementById("submitBtn").addEventListener("click", gradeQuiz);
+    document.getElementById("newQuizBtn").addEventListener("click", newQuiz);
+
+    // first quiz on page load
+    newQuiz();
+  </script>
+</body>
+</html>
